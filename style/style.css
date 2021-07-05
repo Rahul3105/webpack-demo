@@ -12,7 +12,7 @@
 
 .notesContainer > div {
   border: 1px solid lime;
-  height: 20%;
+  height: auto;
   padding: 10px 20px;
 }
 .showWholePage {

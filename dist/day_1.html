@@ -8,27 +8,23 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Day 1</h1>
+    <h1 class="indicator">day_1</h1>
     <section id="inputSec">
 
+    </section>
+    <section class="notesContainer">
+    
     </section>
 </body>
 </html>
 <script type="module">
     import getInputArea from '../components/inputArea.js'
     document.getElementById('inputSec').innerHTML = getInputArea()
-
     document.getElementById("addNoteBtn").addEventListener("click", () => {
             addNote();
-    });
-    document.querySelectorAll(".pageArea > a").forEach((a) => {
-            a.addEventListener("click", showNotes);
         });
-    document.querySelector(".showWholePage").addEventListener("click", showWholePage);
-
-
-
     function addNote() {
+        console.log('hi')
             let titleInput = document.getElementById("titleInput");
             let wholeNote = document.getElementById("wholeNote");
             let level = document.querySelector("#chooseLevel");
@@ -47,6 +43,7 @@
             }
             data.push(note);
             localStorage.setItem(day.value, JSON.stringify(data));
+            showNotes(day.value)
         }
         class Note {
             constructor(titleInput, wholeNote, level, day) {
@@ -57,17 +54,13 @@
             }
         }
 
-        document.querySelectorAll(".pageArea > a").forEach((a) => {
-            a.addEventListener("click", showNotes);
-        });
-
         let notesCont = document.getElementsByClassName("notesContainer")[0];
         let currPage;
-        function showNotes() {
-            let day = this.innerHTML;
+        function showNotes(para) {
+            let day = para;
             currPage = day;
             let data = localStorage.getItem(day);
-            notesCont.innerHTML = "";
+            // notesCont.innerHTML = "";
             if (data == null) {
                 data = [];
                 let div = document.createElement("div");
@@ -75,38 +68,21 @@
                 notesCont.append(div);
             } else {
                 data = JSON.parse(data);
-                data.forEach(({ title }) => {
-                    console.log(title);
-                    let div = document.createElement("div");
-                    div.innerHTML = title;
-                    notesCont.append(div);
+                data.forEach(({title,level,wholeNote,day}) => {
+                    let mainCo = document.createElement("div");
+                    let tit = document.createElement("div");
+                    let lev = document.createElement("div")
+                    let wholeNo = document.createElement("div")
+                    let da = document.createElement("div")
+                    tit.innerHTML = `title: ${title}`;
+                    wholeNo.innerHTML = `wholeNote : ${wholeNote}`;
+                    lev.innerHTML = `level ${level}`;
+                    da.innerHTML = `day : ${day}`;
+                    mainCo.append(tit,lev,wholeNo,da);
+                    notesCont.append(mainCo);
                 });
             }
         }
-        document
-            .querySelector(".showWholePage")
-            .addEventListener("click", showWholePage);
-        // function showWholePage() {
-        //   console.log("djfk");
-        //   if (!document.querySelector(".showWholePage").classList.contains("hide")) {
-        //     document
-        //       .getElementsByClassName("showWholePage")[0]
-        //       .classList.remove("hide");
-        //   }
-        // }
-
-        function showWholePage() {
-            if (currPage != undefined) {
-                window.open(`${currPage}.html`, "_Parent");
-            }
-        }
-
-
-
-
-
-
-
-
+        showNotes('day_1')
 
 </script>
