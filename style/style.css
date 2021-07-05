@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+.notesContainer {
+  width: 90%;
+  margin: auto;
+  border: 1px solid lime;
+  margin-top: 50px;
+  height: 200px;
+}
+
+.notesContainer > div {
+  border: 1px solid lime;
+  height: 20%;
+  padding: 10px 20px;
+}
+.showWholePage {
+  cursor: pointer;
+}
+.hide {
+  display: none;
+}
