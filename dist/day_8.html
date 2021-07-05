@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 class="indicator">day_8</h1>
+    <section id="inputSec">
+
+    </section>
+    <section class="notesContainer">
+
+    </section>
+</body>
+
+</html>
+<script type="module">
+    import getInputArea from '../components/inputArea.js'
+    document.getElementById('inputSec').innerHTML = getInputArea()
+    import { showNotes, Note, addNote } from '../components/day.js'
+
+    document.getElementById("addNoteBtn").addEventListener("click", () => {
+        addNote();
+    });
+    let notesCont = document.getElementsByClassName("notesContainer")[0];
+    let currPage;
+
+    showNotes('day_8')
+
+</script>

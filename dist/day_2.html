@@ -10,9 +10,12 @@
 </head>
 
 <body>
-    <h1>Day 2</h1>
+    <h1 class="indicator">day_2</h1>
     <section id="inputSec">
-
+    
+    </section>
+    <section class="notesContainer">
+    
     </section>
 </body>
 
@@ -20,4 +23,13 @@
 <script type="module">
     import getInputArea from '../components/inputArea.js'
     document.getElementById('inputSec').innerHTML = getInputArea()
+    import {showNotes,Note,addNote} from '../components/day.js'
+
+    document.getElementById("addNoteBtn").addEventListener("click", () => {
+            addNote();
+        });
+    let notesCont = document.getElementsByClassName("notesContainer")[0];
+    let currPage;
+
+    showNotes('day_2')
 </script>
