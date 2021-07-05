@@ -21,3 +21,14 @@
 .hide {
   display: none;
 }
+#inputSec {
+  border: 1px solid lime;
+  width: 50%;
+}
+#inputSec input {
+  /* border: 1px solid lime; */
+  display: block;
+  width: 260px;
+  height: 30px;
+  margin-bottom: 10px;
+}
